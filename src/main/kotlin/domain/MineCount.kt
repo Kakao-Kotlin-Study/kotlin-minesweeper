@@ -2,7 +2,7 @@ package domain
 
 import java.lang.NumberFormatException
 
-class Count(private val rawCount: String, getHeight: Height, getWidth: Width) {
+class MineCount(private val rawCount: String, getHeight: Height, getWidth: Width) {
     private val count: Int
     private val height: Height = getHeight
     private val width: Width = getWidth

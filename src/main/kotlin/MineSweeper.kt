@@ -1,19 +1,19 @@
-import domain.Spec
+import domain.Field
+import domain.FieldGenerator
 import view.In
 import view.Out
 
 fun main(args: Array<String>) {
-    val spec = getSpec()
-    val field = spec.makeField()
+    val field = makeField()
     Out.printMine(field)
 }
 
-fun getSpec(): Spec {
+fun makeField(): Field {
     Out.printHeightRequest()
     val height = In.getHeight()
     Out.printWidthRequest()
     val width = In.getWidth()
     Out.printCountRequest()
     val count = In.getCount(height, width)
-    return Spec(height, width, count)
+    return FieldGenerator(height, width, count).generate()
 }

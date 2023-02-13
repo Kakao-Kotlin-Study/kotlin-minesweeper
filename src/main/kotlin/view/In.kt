@@ -1,13 +1,10 @@
 package view
 
-import domain.Count
+import domain.MineCount
 import domain.Height
 import domain.Width
-import java.util.*
 
 object In {
-
-    private val scanner: Scanner = Scanner(System.`in`)
 
     fun getHeight(): Height {
         val input = readln()
@@ -19,9 +16,9 @@ object In {
         return Width(input)
     }
 
-    fun getCount(height: Height, width: Width): Count {
+    fun getCount(height: Height, width: Width): MineCount {
         val input = readln()
-        return Count(input, height, width)
+        return MineCount(input, height, width)
     }
 
 }
