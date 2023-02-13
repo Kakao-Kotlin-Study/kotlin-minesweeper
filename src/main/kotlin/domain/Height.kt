@@ -1,6 +1,6 @@
 package domain
 
-class Height constructor(private val rawHeight: Int) {
+import java.lang.NumberFormatException
     private val height: Int
 
     init {

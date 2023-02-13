@@ -1,6 +1,6 @@
 package domain
 
-class Count constructor(private val rawCount: Int, private val getHeight: Height, private val getWidth: Width) {
+import java.lang.NumberFormatException
     private val count: Int
     private val height: Height = getHeight
     private val width: Width = getWidth

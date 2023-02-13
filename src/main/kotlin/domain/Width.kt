@@ -1,6 +1,6 @@
 package domain
 
-class Width constructor(private val rawWidth: Int) {
+import java.lang.NumberFormatException
     private val width: Int
     init {
         validate()
