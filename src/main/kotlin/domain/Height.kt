@@ -1,11 +1,13 @@
 package domain
 
 import java.lang.NumberFormatException
+
+class Height(private val rawHeight: String) {
     private val height: Int
 
     init {
         validate()
-        height = rawHeight
+        height = rawHeight.toInt()
     }
 
     companion object {
@@ -13,7 +15,13 @@ import java.lang.NumberFormatException
     }
 
     private fun validate() {
-        if (rawHeight < Companion.MINIMUM) {
+        val height: Int
+        try {
+            height = rawHeight.toInt()
+        } catch(e: NumberFormatException) {
+            throw Exception("숫자를 입력해주세요")
+        }
+        if (height < MINIMUM) {
             throw Exception("높이는 항상 양수입니다")
         }
     }

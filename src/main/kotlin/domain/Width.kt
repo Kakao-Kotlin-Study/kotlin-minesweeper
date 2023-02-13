@@ -1,10 +1,12 @@
 package domain
 
 import java.lang.NumberFormatException
+
+class Width(private val rawWidth: String) {
     private val width: Int
     init {
         validate()
-        width = rawWidth
+        width = rawWidth.toInt()
     }
 
     companion object {
@@ -12,7 +14,13 @@ import java.lang.NumberFormatException
     }
 
     private fun validate() {
-        if (rawWidth < Companion.MINIMUM) {
+        val width: Int
+        try {
+            width = rawWidth.toInt()
+        } catch(e: NumberFormatException) {
+            throw Exception("숫자를 입력해주세요")
+        }
+        if (width < MINIMUM) {
             throw Exception("너비는 항상 양수입니다")
         }
     }

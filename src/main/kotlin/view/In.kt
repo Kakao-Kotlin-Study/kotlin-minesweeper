@@ -10,17 +10,17 @@ object In {
     private val scanner: Scanner = Scanner(System.`in`)
 
     fun getHeight(): Height {
-        val input = scanner.nextInt()
+        val input = readln()
         return Height(input)
     }
 
     fun getWidth(): Width {
-        val input = scanner.nextInt()
+        val input = readln()
         return Width(input)
     }
 
     fun getCount(height: Height, width: Width): Count {
-        val input = scanner.nextInt()
+        val input = readln()
         return Count(input, height, width)
     }
 

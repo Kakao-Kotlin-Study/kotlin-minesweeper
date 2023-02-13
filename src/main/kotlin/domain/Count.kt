@@ -1,6 +1,8 @@
 package domain
 
 import java.lang.NumberFormatException
+
+class Count(private val rawCount: String, getHeight: Height, getWidth: Width) {
     private val count: Int
     private val height: Height = getHeight
     private val width: Width = getWidth
@@ -10,12 +12,18 @@ import java.lang.NumberFormatException
     }
 
     init {
-        validate(rawCount)
-        count = rawCount
+        validate()
+        count = rawCount.toInt()
     }
 
-    private fun validate(count: Int) {
-        if (count < Companion.MINIMUM || count > height.multiple(width)) {
+    private fun validate() {
+        val count: Int
+        try {
+            count = rawCount.toInt()
+        } catch(e: NumberFormatException) {
+            throw Exception("숫자를 입력해주세요")
+        }
+        if (count < MINIMUM || count > height.multiple(width)) {
             throw Exception("개수는 항상 음수보다 크고 높이 X 너비 값보다 작거나 같습니다.")
         }
     }
