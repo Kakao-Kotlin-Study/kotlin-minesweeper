@@ -1,19 +1,32 @@
-import domain.Field
 import domain.FieldGenerator
+import domain.RowNum
+import domain.MineCount
+import domain.ColNum
 import view.In
 import view.Out
 
 fun main(args: Array<String>) {
-    val field = makeField()
+    val rowNum = getRowNum()
+    val colNum = getColNum()
+    val mineCount = getMineCount(rowNum, colNum)
+    val field = FieldGenerator.generate(rowNum, colNum, mineCount)
     Out.printMine(field)
 }
 
-fun makeField(): Field {
+fun getRowNum(): RowNum {
     Out.printHeightRequest()
     val height = In.getHeight()
+    return RowNum(height)
+}
+
+fun getColNum(): ColNum {
     Out.printWidthRequest()
     val width = In.getWidth()
+    return ColNum(width)
+}
+
+fun getMineCount(rowNum: RowNum, colNum: ColNum): MineCount {
     Out.printCountRequest()
-    val count = In.getCount(height, width)
-    return FieldGenerator(height, width, count).generate()
+    val mineCount = In.getMineCount()
+    return MineCount(mineCount, rowNum, colNum)
 }
