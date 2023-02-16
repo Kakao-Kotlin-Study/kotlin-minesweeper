@@ -1,5 +1,4 @@
 package domain
 
-class Mine() : Section() {
-    override var icon: String = "X"
+class Mine : Section {
 }

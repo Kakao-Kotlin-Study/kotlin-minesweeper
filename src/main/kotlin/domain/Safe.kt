@@ -1,5 +1,9 @@
 package domain
 
-class Safe() : Section() {
-    override var icon: String = "."
+class Safe : Section {
+    var mineDensity: Int = 0
+
+    fun add() {
+        mineDensity++
+    }
 }
