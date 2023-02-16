@@ -1,9 +1,9 @@
 package domain
 
-class Field(private val field: MutableList<Row>) {
+class Field(private val field: MutableList<MutableList<Section>>) {
 
     fun layMine(rowNum: Int, colNum: Int): Field {
-        field[rowNum].setMine(colNum)
+        field[rowNum][colNum] = Mine()
         return Field(field)
     }
 
