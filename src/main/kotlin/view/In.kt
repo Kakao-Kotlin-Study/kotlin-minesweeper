@@ -1,24 +1,17 @@
 package view
 
-import domain.MineCount
-import domain.Height
-import domain.Width
-
 object In {
 
-    fun getHeight(): Height {
-        val input = readln()
-        return Height(input)
+    fun getHeight(): String {
+        return readln()
     }
 
-    fun getWidth(): Width {
-        val input = readln()
-        return Width(input)
+    fun getWidth(): String {
+        return readln()
     }
 
-    fun getCount(height: Height, width: Width): MineCount {
-        val input = readln()
-        return MineCount(input, height, width)
+    fun getMineCount(): String {
+        return readln()
     }
 
 }
