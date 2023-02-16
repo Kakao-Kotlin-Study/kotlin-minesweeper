@@ -22,4 +22,20 @@ class Field(private val field: MutableList<MutableList<Section>>) {
         }
     }
 
+    fun getFieldWithMineDensity(): List<List<Int>> {
+        val fieldWithMineDensity: MutableList<MutableList<Int>> = mutableListOf()
+        field.forEach {
+            val row: MutableList<Int> = mutableListOf()
+            it.forEach {
+                section -> when(section) {
+                    is Safe -> row.add(section.mineDensity)
+                    is Mine -> row.add(-1)
+                    else -> throw Exception()
+                }
+            }
+            fieldWithMineDensity.add(row)
+        }
+        return fieldWithMineDensity
+    }
+
 }

@@ -17,7 +17,17 @@ object Out {
     }
 
     fun printMine(field: Field) {
-        println(field.getRowString())
+        val fieldWithMineDensity = field.getFieldWithMineDensity()
+        val log = buildString { fieldWithMineDensity.forEach {
+            it.forEach { mineDensity ->
+                when {
+                    mineDensity >= 0 -> append("$mineDensity  ")
+                    else -> append("X  ")
+                }
+            }
+            append("\n")
+        } }
+        println(log)
     }
 
 }
