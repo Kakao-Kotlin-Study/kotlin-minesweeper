@@ -1,9 +1,9 @@
 package domain
 
-class FieldGenerator(private val height: Height, private val width: Width, private val mineCount: MineCount) {
+object FieldGenerator {
 
-    fun generate(): Field {
-        val safeField = height.makeSafeField(width)
+    fun generate(rowNum: RowNum, colNum: ColNum, mineCount: MineCount): Field {
+        val safeField = rowNum.makeSafeField(colNum)
         val coords: Coordinates = mineCount.makeRandomCoordinates()
         return coords.layMines(safeField)
     }
