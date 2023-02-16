@@ -1,11 +1,7 @@
 package domain
 
-import java.lang.NumberFormatException
-
-class MineCount(private val rawCount: String, getHeight: Height, getWidth: Width) {
-    private val count: Int
-    private val height: Height = getHeight
-    private val width: Width = getWidth
+class MineCount(private val count: String, private val rowNum: RowNum, private val colNum: ColNum) {
+    private val mineCount: Int
 
     companion object {
         const val MINIMUM = 1
@@ -13,23 +9,23 @@ class MineCount(private val rawCount: String, getHeight: Height, getWidth: Width
 
     init {
         validate()
-        count = rawCount.toInt()
+        mineCount = count.toInt()
     }
 
     private fun validate() {
-        val count: Int
+        val countNum: Int
         try {
-            count = rawCount.toInt()
+            countNum = count.toInt()
         } catch(e: NumberFormatException) {
             throw Exception("숫자를 입력해주세요")
         }
-        if (count < MINIMUM || count > height.multiple(width)) {
+        if (countNum < MINIMUM || countNum > rowNum.multiple(colNum)) {
             throw Exception("개수는 항상 음수보다 크고 높이 X 너비 값보다 작거나 같습니다.")
         }
     }
 
     fun makeRandomCoordinates(): Coordinates {
-        val list = MutableList(height.multiple(width)) { i -> Coordinate(width.getRowNum(i), width.getColNum(i)) }
-        return Coordinates(list.shuffled().subList(0, count))
+        val list = MutableList(rowNum.multiple(colNum)) { i -> Coordinate(colNum.getRowNum(i), colNum.getColNum(i)) }
+        return Coordinates(list.shuffled().subList(0, mineCount))
     }
 }
